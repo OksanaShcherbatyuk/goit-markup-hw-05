@@ -37,15 +37,13 @@ p {
 .hidden {
     display: none;
 }
-
-.nav-item:not(:last-child) {
-    margin-right: 50px;
-}
-
-
 .section-title {
     margin-top: 0;
     margin-bottom: 50px;
+}
+
+.nav-item:not(:last-child) {
+    margin-right: 50px;
 }
 
 .container {
@@ -97,7 +95,20 @@ p {
 }
 
 .nav-link.active {
+    position: relative;
     color: var(--brand-color);
+}
+
+.nav-link.active::after {
+    display: inline-block;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 4px;
+    background-color: var(--brand-color);
+    border-radius: 2px;
+    bottom: 0;
+    left: 0;
 }
 
 .nav-link{
@@ -116,9 +127,14 @@ p {
     color: var(--brand-color);
 }
 
+
 .nav-contacts:not(:last-child) {
     margin-right: 50px;
 }
+
+.nav-panel a {
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+} 
 
 .nav-contacts a{
     display: inline-flex;
@@ -129,6 +145,7 @@ p {
     line-height: 1.14;
     letter-spacing: 0.02em;
     align-items: center;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-contacts {
@@ -144,6 +161,7 @@ p {
 }
 
 .icon-contacts {
+    display: flex;
     fill: currentColor;
     margin-right: 10px;
     
@@ -153,6 +171,7 @@ p {
 }*/
 .main-banner {
     max-width: 1600px;
+    min-height: 600px;
     margin-left: auto;
     margin-right: auto;
     background-color: #C4C4C4;
@@ -166,7 +185,15 @@ p {
     padding-top: 200px;
     padding-bottom: 200px;
     text-align: center;
+
 }
+
+.banner {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+} 
 
 .banner-slogan {
     margin-bottom: 30px;
@@ -192,6 +219,10 @@ button {
     
 
 .btn-index {
+    display: inline-block;
+    
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 4px;
     padding: 10px 32px;
     min-width: 200px;
@@ -211,6 +242,64 @@ button {
 .btn-index:hover, .btn-index:focus {
     background-color: #ffffff;
     color: var(--text-color-primary);
+}
+
+.backdrop {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 5;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 581px;
+    min-width: 521px;
+
+    /* max-height: 100vh;
+  overflow-y: auto; */
+
+    /* max-width: 521px;
+  width: 100%; */
+    background: #ffffff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.close-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border-radius: 50%;
+    color: #000000;
+
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-btn svg {
+    fill: currentColor;
+}
+
+.close-btn:hover.close-btn svg {
+    fill: var(--brand-color);
 }
 
 .section {
@@ -271,6 +360,7 @@ button {
     font-weight: 700;
     font-size: 36px;
     line-height: 1.17;
+    letter-spacing: 0.03em;
     text-align: center;
 }
 
@@ -281,14 +371,50 @@ button {
     padding-bottom: var(--set-gap94);
 }
 
+.whatwedo-list {
+    display: inline-flex;
+    ;
+}
+
+.whatwedo-container {
+    justify-content: space-between;
+}
 .whatwedopic {
     display: block;
     width: calc(100% - var(--set-gap30)*2/3);
     margin-right: var(--set-gap30);
+    position: relative;
 }
 
 .whatwedopic:last-child {
     margin-right: 0;
+}
+
+.team-sl-list,
+.whatwedo-text-thumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.whatwedo-text-thumb {
+    position: absolute;
+    width: 370px;
+    min-height: 70px;
+    bottom: 4px;
+    background-color: rgba(47, 48, 58, 0.8);
+}
+
+.whatwedo-desc {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.46;
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #ffffff;
+    align-items: center;
 }
 
 .team {
